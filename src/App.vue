@@ -1,7 +1,10 @@
 <template>
-  <v-app>
+  <v-app class="background-purple">
+    <v-app-bar app v-if="$router.currentRoute.name != 'home'" flat dense color="#521ba6">
+      <v-icon dark @click="goHome" >mdi-arrow-left</v-icon>
+    </v-app-bar>
     <v-main>
-      <router-view/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
@@ -11,8 +14,21 @@
 export default {
   name: 'App',
 
-  data: () => ({
-    //
-  }),
+  methods: {
+    goHome(){
+      this.$router.push("/")
+    }
+  }
 };
 </script>
+
+<style>
+.background-purple {
+  background: radial-gradient(circle,
+      #6b23d9,
+      #521ba6) !important;
+  background-repeat: no-repeat !important;
+  -webkit-font-smoothing: antialiased !important;
+  color: white !important;
+}
+</style>
