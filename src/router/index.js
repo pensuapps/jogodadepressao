@@ -31,13 +31,12 @@ const routes = [
   }
 ]
 
+const router = new VueRouter({
+  routes
+})
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
   next();
 });
-
-const router = new VueRouter({
-  routes
-})
 
 export default router
