@@ -24,7 +24,7 @@
       </div>
       <div class="d-flex flex-column align-center" @click="handleButton">
         <v-btn fab depressed dark color="#94BF36">
-          <v-icon> mdi-thumbs-up-down </v-icon>
+          <v-icon> mdi-lightbulb </v-icon>
         </v-btn>
         <p class="text-center">Interessante</p>
       </div>
