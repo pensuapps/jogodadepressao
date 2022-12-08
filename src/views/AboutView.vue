@@ -20,19 +20,19 @@
         <v-btn fab depressed color="#3174CC" dark>
           <v-icon> mdi-thumb-up </v-icon>
         </v-btn>
-        <p class="text-center">Sim</p>
+        <p class="text-center">Entendi</p>
       </div>
       <div class="d-flex flex-column align-center" @click="handleButton">
         <v-btn fab depressed dark color="#94BF36">
           <v-icon> mdi-thumbs-up-down </v-icon>
         </v-btn>
-        <p class="text-center">Às vezes</p>
+        <p class="text-center">Interessante</p>
       </div>
       <div class="d-flex flex-column align-center" @click="handleButton">
         <v-btn fab depressed dark color="#BF3A22">
           <v-icon> mdi-thumb-down </v-icon>
         </v-btn>
-        <p class="text-center">Não</p>
+        <p class="text-center">Não Entendi</p>
       </div>
     </div>
   </v-container>
