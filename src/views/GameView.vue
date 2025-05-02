@@ -1,9 +1,18 @@
 <template>
-  <v-container class="fill-height d-flex flex-column justify-space-between content-size">
+  <v-container
+    class="fill-height d-flex flex-column justify-space-between content-size"
+  >
     <template v-if="!showResult">
       <div class="full-width">
-        <v-img :src="require(`../assets/images/depressionGame/${currentQuestion.img}.png`)" max-height="212"
-          max-width="328" cover class="bg-grey-lighten-2 rounded-lg mx-auto"></v-img>
+        <v-img
+          :src="
+            require(`../assets/images/depressionGame/${currentQuestion.img}.png`)
+          "
+          max-height="212"
+          max-width="328"
+          cover
+          class="bg-grey-lighten-2 rounded-lg mx-auto"
+        ></v-img>
 
         <h3 class="text-justify mt-3">
           {{ currentQuestion.text }}
@@ -32,15 +41,26 @@
     </template>
     <template v-else>
       <div class="full-width">
-        <v-img src="../assets/images/depressionGame/end.png" max-height="212" max-width="328" cover
-          class="bg-grey-lighten-2 rounded-lg mx-auto"></v-img>
+        <v-img
+          src="../assets/images/depressionGame/end.png"
+          max-height="212"
+          max-width="328"
+          cover
+          class="bg-grey-lighten-2 rounded-lg mx-auto"
+        ></v-img>
 
         <h3 class="text-justify mt-3">
           <template v-if="score < 6">
-            <span>Você parece estar se divertindo e aprendendo coisas legais na escola, continue assim!</span>
+            <span
+              >Você parece estar se divertindo e aprendendo coisas legais na
+              escola, continue assim!</span
+            >
           </template>
           <template v-else>
-            <span>Você deve conversar com seus pais e professores sobre o que acontece na escola.</span>
+            <span
+              >Você deve conversar com seus pais e professores sobre o que
+              acontece na escola.</span
+            >
           </template>
         </h3>
       </div>
@@ -64,51 +84,58 @@
     </template>
   </v-container>
 </template>
-  
-<script>
-import { depressionQuestions } from "../data/questions"
 
+<script>
+import { depressionQuestions } from "../data/questions";
+import { writeToFirestore } from "../plugins/firebase";
 // Components
 export default {
   name: "GameView",
   data: () => ({
-      questionIndex: 0,
-      score: 0,
-      showResult: false,
-      showLikeButtons: true
+    questionIndex: 0,
+    score: 0,
+    showResult: false,
+    showLikeButtons: true,
   }),
   computed: {
     currentQuestion() {
-      return depressionQuestions.questions[this.questionIndex]
+      return depressionQuestions.questions[this.questionIndex];
     },
     lastQuestion() {
-      return (this.questionIndex + 1) === depressionQuestions.questions.length
-    }
+      return this.questionIndex + 1 === depressionQuestions.questions.length;
+    },
   },
   watch: {
     questionIndex() {
       if (this.lastQuestion) {
-        this.showResult = true
+        this.showResult = true;
+        if (window.location.hostname !== "localhost") {
+          writeToFirestore({
+            score: this.score,
+            dia: new Date().toLocaleDateString(),
+            aplicacao: "jogo_da_depressao",
+          });
+        }
       }
-    }
+    },
   },
   methods: {
     handleAnsware(value) {
-      this.score += value
+      this.score += value;
       if (!this.lastQuestion) {
-        this.questionIndex++
+        this.questionIndex++;
       }
     },
     handleLike() {
-      this.showLikeButtons = false
+      this.showLikeButtons = false;
     },
     goToAbout() {
-      this.$router.push("/sobre")
-    }
+      this.$router.push("/sobre");
+    },
   },
 };
 </script>
-  
+
 <style scoped>
 .content-size {
   max-width: 328px;
@@ -128,4 +155,3 @@ a {
   color: white;
 }
 </style>
-  
