@@ -1,6 +1,6 @@
 <template>
   <v-container
-    class="fill-height d-flex flex-column justify-space-between content-size"
+    class=".max-height d-flex flex-column justify-space-between content-size"
   >
     <div class="full-width">
       <v-img
@@ -33,19 +33,22 @@
     </div>
     <div class="full-width grid-3" v-if="showButtons">
       <div class="d-flex flex-column align-center" @click="handleButton">
-        <v-btn fab depressed color="#3174CC" dark>
+        <v-btn fab depressed color="#3174CC" dark x-large>
           <v-icon> mdi-thumb-up </v-icon>
         </v-btn>
         <p class="text-center">Entendi</p>
       </div>
       <div class="d-flex flex-column align-center" @click="handleButton">
-        <v-btn fab depressed dark color="#94BF36">
+        <v-btn fab depressed dark color="#94BF36" x-large>
           <v-icon> mdi-lightbulb </v-icon>
         </v-btn>
         <p class="text-center">Interessante</p>
       </div>
-      <div class="d-flex flex-column align-center" @click="handleButton">
-        <v-btn fab depressed dark color="#BF3A22">
+      <div
+        class="d-flex flex-column align-center"
+        @click="handleButton"
+      >
+        <v-btn fab depressed dark color="#BF3A22" x-large>
           <v-icon> mdi-thumb-down </v-icon>
         </v-btn>
         <p class="text-center">Não Entendi</p>
@@ -91,5 +94,9 @@ export default {
 
 a {
   text-decoration: underline;
+}
+
+.max-height {
+  min-height: calc(100dvh - 4rem);
 }
 </style>

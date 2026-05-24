@@ -1,12 +1,6 @@
 <template>
   <v-app class="background-purple">
-    <v-app-bar
-      app
-      v-if="$router.currentRoute.name != 'home'"
-      flat
-      dense
-      color="#5F88B4"
-    >
+    <v-app-bar app flat dense color="#5F88B4">
       <v-icon dark @click="goHome">mdi-arrow-left</v-icon>
     </v-app-bar>
     <v-main>
@@ -21,6 +15,10 @@ export default {
 
   methods: {
     goHome() {
+      if (this.$route.path == "/") {
+        window.open("https://explorandominhamente.netlify.app/");
+      }
+
       this.$router.push("/");
     },
   },
