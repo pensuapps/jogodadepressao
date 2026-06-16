@@ -26,7 +26,7 @@ export const depressionQuestions = {
         bg: "",
       },
       {
-        text: "Você prefere ficar sozinho?",
+        text: "Você prefere ficar sozinho(a)?",
         classification: "question",
         img: "alone",
         bg: "",
@@ -38,13 +38,13 @@ export const depressionQuestions = {
         bg: "",
       },
       {
-        text: "Você pensa em coisas ruins às vezes?",
+        text: "Você pensa em coisas ruins?",
         classification: "question",
         img: "badthoughs",
         bg: "",
       },
       {
-        text: "Você se sente cansado, e não quer brincar?",
+        text: "Você se sente cansado(a), e não quer brincar?",
         classification: "question",
         img: "tired",
         bg: "",
@@ -68,7 +68,7 @@ export const depressionQuestions = {
         bg: "",
       },
       {
-        text: "Você se sente sozinho, e acha que ninguém quer ser seu amigo?",
+        text: "Você se sente sozinho(a), e acha que ninguém quer ser seu amigo(a?",
         classification: "question",
         img: "lonely",
         bg: "",
